@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Software Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: white;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .cv-container {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            display: grid;
+            grid-template-columns: 35% 65%;
+            position: relative;
+            overflow: visible;
+        }
+
+        /* Left Sidebar - Dark Blue */
+        .sidebar {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 35px 25px 30px 25px;
+            position: relative;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.03)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 22px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            margin: 0 auto 20px;
+            background: url('./IMG_20251230_103745.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        .name {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .title {
+            font-size: 14px;
+            color: #93c5fd;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section {
+            margin-bottom: 22px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 3px solid #60a5fa;
+            padding-bottom: 8px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .contact-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            flex-shrink: 0;
+            opacity: 0.9;
+        }
+
+        .skill-item {
+            margin-bottom: 12px;
+        }
+
+        .skill-name {
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 100%);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .language-name {
+            font-weight: 700;
+        }
+
+        .language-level {
+            color: #93c5fd;
+            font-weight: 600;
+        }
+
+        /* Right Main Content */
+        .main-content {
+            padding: 35px 40px 30px 35px;
+            background: white;
+        }
+
+        .header {
+            margin-bottom: 25px;
+            border-bottom: 3px solid #1e3a8a;
+            padding-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            font-weight: 900;
+            color: #1e3a8a;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .header .tagline {
+            font-size: 16px;
+            color: #3b82f6;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .main-section {
+            margin-bottom: 25px;
+        }
+
+        .main-section-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .main-section-title::before {
+            content: '';
+            width: 5px;
+            height: 24px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+            margin-right: 12px;
+            border-radius: 3px;
+        }
+
+        .summary {
+            font-size: 12px;
+            line-height: 1.7;
+            color: #4b5563;
+            text-align: justify;
+        }
+
+        .experience-item,
+        .project-item {
+            margin-bottom: 18px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .experience-item::before,
+        .project-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            background: #3b82f6;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+
+        .job-header,
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .job-title,
+        .project-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #1e3a8a;
+        }
+
+        .company,
+        .tech-stack {
+            font-size: 12px;
+            color: #3b82f6;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            font-size: 10px;
+            color: #6b7280;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .description {
+            font-size: 11px;
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 6px;
+        }
+
+        .achievements {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .achievements li {
+            font-size: 11px;
+            color: #374151;
+            margin-bottom: 5px;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .achievements li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 12px;
+            margin-bottom: 16px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: #1e3a8a;
+            margin-bottom: 8px;
+        }
+
+        .highlight-items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .highlight-item {
+            font-size: 10px;
+            color: #374151;
+            padding: 5px 10px;
+            background: white;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 20px;
+            font-weight: 900;
+            color: #60a5fa;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 9px;
+            color: #93c5fd;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .cv-container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cv-container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-img"></div>
+                <div class="name">CAO VU KHANG</div>
+                <div class="title">Software Developer</div>
+            </div>
+
+            <!-- Contact -->
+            <div class="section">
+                <div class="section-title">CONTACT</div>
+                <div class="contact-item">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    <span>ckhang177@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                    <span>0357534716</span>
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span>Can Tho, Vietnam</span>
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span>github.com/khangkhongnoi</span>
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                        <path fill-rule="evenodd"
+                            d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span>yourportfolio.com</span>
+                </div>
+            </div>
+
+            <!-- Key Stats -->
+            <div class="section">
+                <div class="section-title">AT A GLANCE</div>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Years Exp.</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Major Projects</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">Active</span>
+                        <span class="stat-label">System Deployment</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Skills -->
+            <div class="section">
+                <div class="section-title">TECH STACK</div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Java / Spring Boot</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>C# / .NET</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>React / Next.js</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Node.js / Express</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Flutter / Dart</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Golang</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>PostgreSQL / SQL Server</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Docker / Kubernetes</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="section">
+                <div class="section-title">LANGUAGES</div>
+
+                <div class="language-item">
+                    <span class="language-name">English</span>
+                    <span class="language-level">Basic</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>CAO VU KHANG</h1>
+                <div class="tagline">Full-Stack Software Developer</div>
+            </div>
+
+            <!-- Professional Summary -->
+            <div class="main-section">
+                <div class="main-section-title">PROFESSIONAL SUMMARY</div>
+                <p class="summary">
+                    Dedicated Full-Stack Developer with <strong>3+ years</strong> of experience building
+                    software systems for educational institutions and the hospitality industry. Experienced in
+                    developing
+                    applications for university-wide deployment to serve students and faculty. Skilled in improving
+                    operational workflows through automation and delivering user-centric digital solutions.
+                    Proficient in Java, React, Node.js, Flutter, and Golang with a focus on reliable system architecture
+                    and efficient management.
+                </p>
+            </div>
+
+            <!-- Key Achievements Highlight -->
+            <div class="highlight-box">
+                <div class="highlight-title">🏆 KEY ACHIEVEMENTS</div>
+                <div class="highlight-items">
+                    <div class="highlight-item">Significantly reduced processing time</div>
+                    <div class="highlight-item">Improved calculation accuracy</div>
+                    <div class="highlight-item">Enhanced online booking efficiency</div>
+                    <div class="highlight-item">Automated repetitive manual tasks</div>
+                    <div class="highlight-item">Optimized system reliability</div>
+                    <div class="highlight-item">Deployed systems for students & staff</div>
+                </div>
+            </div>
+
+            <!-- Work Experience -->
+            <div class="main-section">
+                <div class="main-section-title">WORK EXPERIENCE</div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Software Developer</div>
+                            <div class="company">Vo Truong Toan University and Hospital</div>
+                        </div>
+                        <div class="date">2026 - Present</div>
+                    </div>
+                    <div class="description">
+                        Developer for institutional software systems serving the university's student body and staff.
+                        Participated in the design and delivery of major platforms including mobile apps, admission
+                        systems,
+                        and hotel management solutions.
+                    </div>
+                    <ul class="achievements">
+                        <li>Developed cross-platform mobile app (Flutter/Golang) to improve class schedule accessibility
+                        </li>
+                        <li>Built admission management system streamlining candidate processing and data entry</li>
+                        <li>Created automated course scheduler to optimize room utilization and avoid conflicts</li>
+                        <li>Delivered hotel platform with online booking and internal reservation management</li>
+                        <li>Automated various manual processes to improve department operational efficiency</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Key Projects -->
+            <div class="main-section">
+                <div class="main-section-title">FEATURED PROJECTS</div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Student Schedule Mobile App</div>
+                            <div class="tech-stack">Flutter • Golang • Firebase • REST API</div>
+                        </div>
+                        <div class="date">2025</div>
+                    </div>
+                    <ul class="achievements">
+                        <li>Cross-platform app with secure check-in, smart notifications, and offline-first
+                            architecture</li>
+                        <li>Bilingual support (EN/VI), dark/light themes, multi-device management</li>
+                        <li>Impact: Successfully deployed for students and staff, improving schedule accessibility</li>
+                    </ul>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Golden Era Hotel Platform</div>
+                            <div class="tech-stack">Next.js • Java Spring • Node.js • PostgreSQL</div>
+                        </div>
+                        <div class="date">2025</div>
+                    </div>
+                    <ul class="achievements">
+                        <li>Dual platform: Public booking website + internal management system with forecasting</li>
+                        <li>Real-time availability, payment gateway, and occupancy analytics</li>
+                        <li>Impact: Increased online booking efficiency and improved revenue reporting</li>
+                    </ul>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Admission Management System</div>
+                            <div class="tech-stack">C# • .NET Core • ASP.NET Core • SQL Server</div>
+                        </div>
+                        <div class="date">2024</div>
+                    </div>
+                    <ul class="achievements">
+                        <li>Automated score calculation, bulk import/export, and admission letter generation</li>
+                        <li>Role-based access control, audit trails, and statistical reporting tools</li>
+                        <li>Impact: Significant reduction in errors and manual processing time for admissions</li>
+                    </ul>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Intelligent Course Scheduler</div>
+                            <div class="tech-stack">Node.js • ReactJS • SQL Server • AI Algorithms</div>
+                        </div>
+                        <div class="date">2024</div>
+                    </div>
+                    <ul class="achievements">
+                        <li>Constraint satisfaction algorithms for automated optimal schedule generation</li>
+                        <li>Visual editor, conflict detection, and room utilization optimization</li>
+                        <li>Impact: Drastic reduction in scheduling time and improved resource allocation</li>
+                    </ul>
+                </div>
+
+
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Student Grade Management System</div>
+                            <div class="tech-stack">C# • .NET Core • ASP.NET Core • SQL Server</div>
+                        </div>
+                        <div class="date">2023</div>
+                    </div>
+                    <ul class="achievements">
+                        <li>University-wide grade tracking, automated GPA calculations, and transcript generation</li>
+                        <li>Secure result publication workflow with audit trails for data integrity</li>
+                        <li>Impact: Centralized academic records and faster result processing for the university</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="main-section">
+                <div class="main-section-title">EDUCATION & CERTIFICATIONS</div>
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Bachelor's degree in Information Systems</div>
+                            <div class="company">Can Tho University</div>
+                        </div>
+                        <div class="date">2018 - 2023</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Note -->
+            <div
+                style="text-align: center; padding: 12px; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius: 8px; margin-top: 10px;">
+                <p style="font-size: 10px; color: #1e3a8a; font-weight: 700; margin: 0;">
+                    📂 For detailed project case studies, technical documentation, and live demos, visit:
+                    <strong>yourportfolio.com</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
